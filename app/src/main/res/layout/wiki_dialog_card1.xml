@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.wikifragments.WikiAbcFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="12dp"
+        android:background="@color/grey">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  毛卷云  Cirrus fibratus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  钩卷云  Cirrus uncinus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  密卷云  Cirrus spissatus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  堡状卷云  Cirrus castellanus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  絮状卷云  Cirrus floccus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  乱卷云  Cirrus intortus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  辐辏状卷云  Cirrus radiatus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  羽翎卷云  Cirrus vertebratus"/>
+        </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="8dp"
+          app:cardCornerRadius="28dp"
+          app:cardElevation="6dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/card_text_size"
+            android:padding="@dimen/card_padding_size"
+            android:text="  复卷云  Cirrus duplicatus"/>
+      </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  乳状卷云  Cirrus mamma"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  波涛卷云  Cirrus fluctus"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/card_text_size"
+              android:padding="@dimen/card_padding_size"
+              android:text="  伪卷云  Cirrus nothus(非WMO)"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+      </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

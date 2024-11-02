@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="backdrop_rect_corner_radius">36dp</dimen>
+    <dimen name="launcher_screen_text_size">18sp</dimen>
+    <dimen name="wiki_bookmark_font_size">20sp</dimen>
+    <dimen name="tag_text_size">24sp</dimen>
+    <dimen name="card_text_size">14sp</dimen>
+    <dimen name="card_padding_size">12dp</dimen>
+    <dimen name="height_pt">130dp</dimen>
+    <dimen name="width_pt">105dp</dimen>
+</resources>

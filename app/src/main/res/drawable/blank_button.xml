@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 没有定义任何 path，完全空白 -->
+    <path
+        android:fillColor="#00000000"
+    android:pathData="M0,0H0V0H0Z"/> <!-- 简单的空路径 -->
+</vector>
