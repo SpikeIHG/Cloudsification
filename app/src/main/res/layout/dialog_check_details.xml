@@ -2,45 +2,149 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/m_lightorange"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/dialog_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <!--<EditText
         android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:hint="这是一朵什么云呢"
-        android:textColorHint="@android:color/darker_gray"
         android:autofillHints="积雨云,层积云,高积云"
+        android:hint="这是一朵什么云呢"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_image" />
+-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_image"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_btn"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        >
 
-    <EditText
-        android:id="@+id/dialog_description"
-        android:layout_width="wrap_content"
+<!--<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/show_loca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="7dp">
+
+            <TextView
+                android:id="@+id/this_loca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+               android:textStyle="italic"
+                android:text="测试使用 应该读入数据库的位置location"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/show_time"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@android:color/darker_gray"
-        android:textSize="16sp"
-        android:hint="坐在你身边看云，我看得更清楚"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+        app:layout_constraintTop_toBottomOf="@id/show_loca"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="7dp">
+
+        <TextView
+            android:id="@+id/this_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:textStyle="italic"
+            android:text="测试使用 应该读入数据库的位置location"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
 
-    <AutoCompleteTextView
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/show_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/show_time"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="7dp">
+
+
+        <Spinner
+            android:id="@+id/spinner0"
+            android:padding="4dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_description"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+        <EditText
+            android:id="@+id/dialog_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_bg"
+            android:hint="坐在你身边看云，我看得更清楚"
+            android:letterSpacing="0.05"
+            android:padding="10dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_label"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="30dp"/>
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+</LinearLayout>
+
+    </ScrollView>
+    <!-- <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,26 +152,33 @@
         android:completionThreshold="0"
         app:layout_constraintBottom_toTopOf="@+id/save_btn"
         app:layout_constraintTop_toBottomOf="@+id/dialog_image" />
-
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_description"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+-->
 
     <Button
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_title"
+        android:layout_marginBottom="16dp"
+        android:text="保存"
+        android:textSize="16sp"
+        android:fontFamily="@font/d"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="取消"
+        android:textSize="16sp"
+        android:fontFamily="@font/d"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_image" />
-
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/save_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

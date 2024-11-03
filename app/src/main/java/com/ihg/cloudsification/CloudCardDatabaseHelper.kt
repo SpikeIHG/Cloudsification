@@ -59,7 +59,7 @@ class CloudCardDatabaseHelper(context: Context, DATABASE_NAME: String?, DATABASE
     fun updateItem(item: CloudCard) {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put("imageUri", item.imageUri)
+            put("tag", item.tag)
             put("description", item.description)
         }
         db.update(tableName, values, "id = ?", arrayOf(item.id.toString()))
