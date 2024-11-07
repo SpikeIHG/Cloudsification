@@ -9,11 +9,9 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Bitmap.createScaledBitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.net.StaticIpConfiguration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -24,7 +22,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
@@ -32,37 +29,30 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.database.CloudCardDatabaseHelper
-import com.example.database.adapter.CloudCardAdapter
+import com.ihg.cloudsification.adapter.CloudCardAdapter
 import com.ihg.cloudsification.FragmentArgumentDelegate
 import com.ihg.cloudsification.MainActivity
 import com.ihg.cloudsification.R
+import com.ihg.cloudsification.adapter.CareerManager
+import com.ihg.cloudsification.adapter.PreferencesManager
+import com.ihg.cloudsification.adapter.SharedViewModel
 import com.ihg.cloudsification.convertToDMS
 import com.ihg.cloudsification.entity.CloudCard
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.ihg.cloudsification.fragments.wikifragments.WikiCustomFragment
 import lv.chi.photopicker.PhotoPickerFragment
-import org.tensorflow.lite.DataType
-import org.tensorflow.lite.gpu.CompatibilityList
-import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import org.tensorflow.lite.task.core.BaseOptions
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.InputStream
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -83,6 +73,14 @@ class GalleryFragment : Fragment() , PhotoPickerFragment.Callback{
     private val model_name = "model.tflite"
     private lateinit var locationManager: LocationManager
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
+    private lateinit var mycareermanager : CareerManager
+    lateinit var preferencesManager: PreferencesManager
+    private lateinit var sharedViewModelsub: SharedViewModel
+
+
+    lateinit var adapter_sp: ArrayAdapter<String>
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -111,12 +109,15 @@ class GalleryFragment : Fragment() , PhotoPickerFragment.Callback{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        mycareermanager = context?.let  { CareerManager(it) }!!
+        sharedViewModelsub = ViewModelProvider(requireActivity()).get(com.ihg.cloudsification.adapter.SharedViewModel::class.java)
         val btn_create_card = view.findViewById<ImageButton>(R.id.imageButton)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // 初始化适配器
-        adapter = CloudCardAdapter(dbHelper.getAllItems(),dbHelper)
+         preferencesManager = context?.let { PreferencesManager(it) }!!
+        adapter = preferencesManager?.let { CloudCardAdapter(dbHelper.getAllItems(),dbHelper, it,mycareermanager,sharedViewModelsub) }!!
         recyclerView.adapter = adapter
 
 
@@ -134,8 +135,15 @@ class GalleryFragment : Fragment() , PhotoPickerFragment.Callback{
 
     private fun getLastLocation() {
         if (context?.let { ActivityCompat.checkSelfPermission(it, Manifest.permission.ACCESS_FINE_LOCATION) } != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(context, "没有开启定位 (╯^╰)", Toast.LENGTH_LONG).show()
            return
         }
+        val locationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Toast.makeText(context, "没有开启GPS定位服务，无法自动导入位置，下拉菜单开启吧(*^O^*)y", Toast.LENGTH_LONG).show()
+            return
+        }
+
         Log.d("LOOOO","开始进行查询")
         // 定义位置监听器
 
@@ -176,7 +184,7 @@ class GalleryFragment : Fragment() , PhotoPickerFragment.Callback{
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(context, "被拒绝啦，如果想要自动填入经纬度信息可以开启 ^ω^", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "首次同意，出于某种什么原因，在之后的卡片才会自动输入 ^ω^", Toast.LENGTH_SHORT).show()
                 getLastLocation()
             } else {
                 Toast.makeText(context, "被拒绝啦，如果想要自动填入经纬度信息可以开启 ^ω^", Toast.LENGTH_SHORT).show()
@@ -312,6 +320,7 @@ Log.d("LABEL",labelArray.joinToString())
 
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onImagesPicked(photos: ArrayList<Uri>) {
 
        // val imgview = view?.findViewById<ImageView>(R.id.imgview)
@@ -327,9 +336,6 @@ Log.d("LABEL",labelArray.joinToString())
         for ((index, photo) in photos.withIndex()){
             showClassifydialog(photo,subFolder)
         }
-
-
-
 
 
     }
@@ -348,18 +354,27 @@ Log.d("LABEL",labelArray.joinToString())
         val cancelButton : Button =dialogView.findViewById(R.id.cancel_btn)
         val classifyButton : Button = dialogView.findViewById(R.id.classify_btn)
         val inputStream = context?.contentResolver?.openInputStream(photo)
-
-
+        val suggestions = arrayOf("地球", "中国", "太阳系", "南极洲","银河系","马孔多","Bebop号")
+        val adapter_etx: ArrayAdapter<String>? = context?.let {
+            ArrayAdapter<String>(
+                it,
+                android.R.layout.simple_dropdown_item_1line,
+                suggestions
+            )
+        }
+        dialoglocationEdit.setAdapter(adapter_etx)
+        dialoglocationEdit.threshold = 0
 
         try {
             val bitmap = BitmapFactory.decodeStream(inputStream)
-            val file = File(subFolder, getFileNameWithTimestamp(photo))
+           /* val file = File(subFolder, getFileNameWithTimestamp(photo))
             FileOutputStream(file).use { outputStream ->
                 bitmap.compress(Bitmap.CompressFormat.PNG, 80, outputStream)
-            }
+            }*/
 
             Glide.with(this)
-                .load(bitmap)
+                //.asBitmap()
+                .load(photo)
                 .into(dialogImageView)
 
 
@@ -370,17 +385,11 @@ Log.d("LABEL",labelArray.joinToString())
                 getLastLocation()
             }
 
-            val suggestions = arrayOf("地球", "中国", "太阳系", "南极洲","银河系","马孔多","Bebop号")
-            val adapter_etx: ArrayAdapter<String>? = context?.let {
-                ArrayAdapter<String>(
-                    it,
-                    android.R.layout.simple_dropdown_item_1line,
-                    suggestions
-                )
-            }
+
             /*val autoCompleteTextView: AutoCompleteTextView =
                 dialogView.findViewById(R.id.add_loca)*/
             val currentDateTime = LocalDateTime.now()
+
 
             // 定义格式化器，输出格式为 "yyyy-MM-dd HH:mm"
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
@@ -388,10 +397,12 @@ Log.d("LABEL",labelArray.joinToString())
             // 格式化当前时间
             val formattedDateTime = currentDateTime.format(formatter)
             dialogtimeEdit.text = formattedDateTime
-            dialoglocationEdit.setAdapter(adapter_etx)
-            dialoglocationEdit.threshold = 0
 
-            val options = arrayOf(  "高积云(Ac)",
+
+
+
+
+            val options = mutableListOf<String>(  "高积云(Ac)",
                 "高层云(As)",
                 "积雨云(Cb)",
                 "卷积云(Cc)",
@@ -402,13 +413,24 @@ Log.d("LABEL",labelArray.joinToString())
                 "层积云(Sc)",
                 "层云(St)",
                 "航迹云(Ct)")
+            val option_cata =  mutableListOf<String>()
+                if(WikiCustomFragment.options.size == 0) {
+                    Log.d("SCC","Kio的")
+                    option_cata.addAll(preferencesManager.getAllGenera())
+                }
+                else
+                {
+                    option_cata.addAll(WikiCustomFragment.options)
+                }
+             options.addAll(option_cata)
+
             val adapter_sp: ArrayAdapter<String>? =
-                context?.let { ArrayAdapter<String>(it, R.layout.spinner_item_layout, options) }
+                context?.let { ArrayAdapter<String>(it, R.layout.spinner_item_layout,options ) }
                // context?.let { ArrayAdapter<String>(it, android.R.layout.simple_spinner_item, options) }
             adapter_sp?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             val spinner: Spinner = dialogView.findViewById(R.id.spinner1)
             spinner.adapter = adapter_sp
-            spinner.setSelection(2)
+            //spinner.setSelection(2)
 
 
 
@@ -428,9 +450,11 @@ Log.d("LABEL",labelArray.joinToString())
 
             // 保存数据写入数据库同时展示视图
             saveButton.setOnClickListener {
-                //val newTitle = dialogTitleEdit.text.toString()
-                val newDescription = dialogDescriptionEdit.text.toString()
+                val file = File(subFolder, getFileNameWithTimestamp(photo))
+                FileOutputStream(file).use { outputStream ->
+                bitmap.compress(Bitmap.CompressFormat.PNG, 80, outputStream) }
 
+                val newDescription = dialogDescriptionEdit.text.toString()
                 val newttag = spinner.selectedItem
                 // 更新数据
                 val new_card = CloudCard(
@@ -446,14 +470,15 @@ Log.d("LABEL",labelArray.joinToString())
                 new_card.time = dialogtimeEdit.text.toString()
                 new_card.location */
 
-
+                mycareermanager.addSpecifiedGeneCloud(spinner.selectedItem.toString())
                 new_card.id = dbHelper.addItem(new_card)
                 adapter.add(new_card)
-
+                sharedViewModelsub.setCloudCount(mycareermanager.getAllAtlasNum().toString())
                 dialog?.dismiss()
             }
 
             cancelButton.setOnClickListener{
+                // 需要删除图片
                 dialog?.dismiss()
             }
 
@@ -483,15 +508,8 @@ Log.d("LABEL",labelArray.joinToString())
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GalleryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+
         @JvmStatic
         fun newInstance(number : Number) =
             GalleryFragment().apply {

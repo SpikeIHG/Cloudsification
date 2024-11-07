@@ -8,4 +8,5 @@
     <dimen name="card_padding_size">12dp</dimen>
     <dimen name="height_pt">130dp</dimen>
     <dimen name="width_pt">105dp</dimen>
+    <dimen name="custome_tag_text_size">20sp</dimen>
 </resources>

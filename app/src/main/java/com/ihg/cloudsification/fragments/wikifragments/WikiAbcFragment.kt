@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -70,6 +71,19 @@ class WikiAbcFragment : Fragment(), OnTagTapListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tagView = view.findViewById<TagSphereView>(R.id.spheretagView)
+        val clip0 = view.findViewById<TextView>(R.id.clip0)
+        clip0.setTextIsSelectable(true)
+
+
+
+
+
+
+
+
+
+
+
 
         tagView.setTextPaint(
             TextPaint().apply {
@@ -126,23 +140,24 @@ class WikiAbcFragment : Fragment(), OnTagTapListener {
 
         val imageNames = arrayOf("images/level.jpg", "images/高积云.jpg","images/卷云.jpg","images/层云.jpg","images/积雨云.jpg","images/积云3.jpg","images/卷层云.jpg","images/卷云2.jpg","images/这是什么云2.jpg","images/特殊云.jpg","images/卷云3.jpg","images/这是什么云.jpg","images/晚霞1.jpg","images/高层云.jpg","images/雨层云.jpg","images/积云2.jpg","images/卷积云.jpg","images/层积云.jpg")
 
-        for (i in imageViews.indices) {
+
             var inputStream: InputStream? = null
             try {
-                inputStream = assetManager?.open(imageNames[i]) // 读取 assets 文件
-                val bitmap = BitmapFactory.decodeStream(inputStream) // 将 InputStream 转换为 Bitmap
-                /*imageViews[i].setImageBitmap(bitmap)*/
-                Glide.with(this)
-                    .load(bitmap)
-                    .into(imageViews[i])
-
+                for (i in imageViews.indices) {
+                    inputStream = assetManager?.open(imageNames[i]) // 读取 assets 文件
+                    //val bitmap = BitmapFactory.decodeStream(inputStream) // 将 InputStream 转换为 Bitmap
+                    /*imageViews[i].setImageBitmap(bitmap)*/
+                    Glide.with(this)
+                        .load(inputStream)
+                        .into(imageViews[i])
+                }
 
             } catch (e: IOException) {
                 e.printStackTrace()
             } finally {
                 inputStream?.close() // 关闭输入
             }
-        }
+
 
 
 

@@ -1,30 +1,16 @@
 package com.ihg.cloudsification
 
 import android.animation.ArgbEvaluator
-import android.graphics.Bitmap.createScaledBitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.example.database.CloudCardDatabaseHelper
-import com.example.database.adapter.CloudCardAdapter
 import com.fridayof1995.tabanimation.SnapTabLayout
 import com.ihg.cloudsification.fragments.GalleryFragment
+import com.ihg.cloudsification.fragments.LifeFragment
 import com.ihg.cloudsification.fragments.WikiFragment
-import lv.chi.photopicker.PhotoPickerFragment
 import org.tensorflow.lite.Interpreter
-import org.tensorflow.lite.gpu.CompatibilityList
-import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.task.core.BaseOptions
-import org.tensorflow.lite.task.vision.classifier.Classifications
-import org.tensorflow.lite.task.vision.classifier.ImageClassifier
-import java.io.InputStream
 
 
 class MainActivity : AppCompatActivity()  {
@@ -54,7 +40,7 @@ class MainActivity : AppCompatActivity()  {
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager);
         viewPagerAdapter.addFragment(WikiFragment.newInstance(0))           // wiki fragment
         viewPagerAdapter.addFragment(GalleryFragment.newInstance(1))
-        viewPagerAdapter.addFragment(MainFragment.newInstance(2))
+        viewPagerAdapter.addFragment(LifeFragment.newInstance())
 
         viewPager.adapter = viewPagerAdapter
 

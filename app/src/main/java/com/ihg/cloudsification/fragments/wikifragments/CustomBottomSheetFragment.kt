@@ -39,6 +39,8 @@ class CustomBottomSheetFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.fragment_custom_bottom_sheet, container, false)
     }
 
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of

@@ -73,6 +73,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/howmanycloud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="89 朵"
@@ -80,6 +81,7 @@
                     android:textSize="14sp" />
 
                 <ImageButton
+                    android:id="@+id/cloudnum_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/wiki" />
@@ -115,6 +117,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/whichcloud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="积云"
@@ -122,6 +125,7 @@
                     android:textSize="14sp" />
 
                 <ImageButton
+                    android:id="@+id/cloudcata_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/wiki" />
@@ -158,6 +162,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/howmanybadge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1 个"
@@ -165,6 +170,7 @@
                     android:textSize="14sp" />
 
                 <ImageButton
+                    android:id="@+id/badge_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/wiki" />
@@ -201,6 +207,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/howmanycustom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0 种"
@@ -208,6 +215,7 @@
                     android:textSize="14sp" />
 
                 <ImageButton
+                    android:id="@+id/customnum_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/wiki" />

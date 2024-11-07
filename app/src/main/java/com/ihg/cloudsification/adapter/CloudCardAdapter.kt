@@ -1,7 +1,7 @@
-package com.example.database.adapter
+package com.ihg.cloudsification.adapter
 
 import android.app.Dialog
-import android.content.ContentResolver
+import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,16 +13,21 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.database.CloudCardDatabaseHelper
 import com.ihg.cloudsification.R
 import com.ihg.cloudsification.entity.CloudCard
+import com.ihg.cloudsification.fragments.wikifragments.WikiCustomFragment
 import java.io.File
 
 
-class CloudCardAdapter(private var items: MutableList<CloudCard>, private val atlasbase: CloudCardDatabaseHelper) : RecyclerView.Adapter<CloudCardAdapter.ViewHolder>() {
+class CloudCardAdapter(private var items: MutableList<CloudCard>, private val atlasbase: CloudCardDatabaseHelper,private var preferencesManager: PreferencesManager,private var careerManager: CareerManager,
+                       private  val sharedViewModelsub: SharedViewModel
+                        ) : RecyclerView.Adapter<CloudCardAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.imageView)
@@ -32,7 +37,6 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
         val desc: TextView = view.findViewById(R.id.description)
 
         val deleteButton: ImageButton = view.findViewById(R.id.deletebutton) // 假设有一个删除按钮
-
 
 
 
@@ -116,7 +120,7 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                 // autoCompleteTextView.setFocusable(false)
                 autoCompleteTextView.threshold = 0*/
 
-                val options = arrayOf( "高积云(Ac)",
+                val options = mutableListOf<String>( "高积云(Ac)",
                     "高层云(As)",
                     "积雨云(Cb)",
                     "卷积云(Cc)",
@@ -127,6 +131,17 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                     "层积云(Sc)",
                     "层云(St)",
                     "航迹云(Ct)")
+                val option_cata = mutableListOf<String>()
+                if(WikiCustomFragment.options.size == 0) {
+                    Log.d("SCC","Kio的")
+                    option_cata.addAll(preferencesManager.getAllGenera())
+                }
+                else
+                {
+                    option_cata.addAll(WikiCustomFragment.options)
+                }
+                options.addAll(option_cata)
+                // options.addAll(WikiCustomFragment.options)
                 val adapter_sp: ArrayAdapter<String> =
                     ArrayAdapter<String>(holder.itemView.context, R.layout.show_spinner_layout, options)
                 adapter_sp.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
@@ -200,9 +215,14 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                 } else {
                    Log.d("DELETE","没有")
                 }
+
                 items.removeAt(index_)
                 // 通知 RecyclerView 更新
                 notifyItemRemoved(index_)
+                if(!careerManager.declineSpecifiedGeneCloud(items[index_].tag))
+                    Log.d("XX","可以的负数")
+                sharedViewModelsub.setCloudCount(careerManager.getAllAtlasNum().toString())
+
                 if (index_ != (items.size + 1)) {
                     notifyItemRangeChanged(index_, items.size + 1)
                 }

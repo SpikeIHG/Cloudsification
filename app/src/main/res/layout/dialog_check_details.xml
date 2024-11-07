@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:padding="6dp"
                android:textStyle="italic"
-                android:text="测试使用 应该读入数据库的位置location"
+                android:text="如果云知道"
                 android:gravity="center"
                 android:textSize="16sp"/>
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:textStyle="italic"
-            android:text="测试使用 应该读入数据库的位置location"
+            android:text="如果你也知道"
             android:gravity="center"
             android:textSize="16sp"/>
 
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edit_bg"
-            android:hint="坐在你身边看云，我看得更清楚"
+            android:hint="坐在你身边看云，我看得更清楚(记录时刻 ^ω^)"
             android:letterSpacing="0.05"
             android:padding="10dp"
             android:textColorHint="@android:color/darker_gray"
@@ -159,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="保存"
+        android:text="确认"
         android:textSize="16sp"
         android:fontFamily="@font/d"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -54,5 +54,8 @@ dependencies {
     implementation libs.tensorflow.lite.support // 可选：用于支持库
     implementation libs.tensorflow.lite.task.vision
 
+    implementation libs.eazegraph
+    implementation libs.library
+
 
 }
