@@ -3,44 +3,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
     >
+
+    <!--<TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/d"
+        android:text="关于云的一切"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    &lt;!&ndash; 卡片1 &ndash;&gt;
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/setting"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toEndOf="@+id/title"
+        app:layout_constraintTop_toTopOf="@+id/title" />
+-->
+    <TextView
+        android:id="@+id/gallery_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TalesofCloud"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gallery_title_scd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关于云的一切"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/d"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gallery_title" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/c1"
+        app:layout_constraintBottom_toBottomOf="@+id/gallery_title_scd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gallery_title" />
+
+
+
+
 
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/shape01"
+        android:layout_marginTop="100dp"
         android:padding="16dp">
 
         <!-- 子fragment的xml容器 -->
 
         <!-- 右上角图标 -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/d"
-            android:text="关于云的一切"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- 卡片1 -->
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/setting"
-            app:layout_constraintBottom_toBottomOf="@+id/title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.372"
-            app:layout_constraintStart_toEndOf="@+id/title"
-            app:layout_constraintTop_toTopOf="@+id/title" />
 
 
         <androidx.cardview.widget.CardView
@@ -84,7 +129,7 @@
                     android:id="@+id/cloudnum_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/wiki" />
+                    android:src="@drawable/k0" />
             </LinearLayout>
             <!--        </LinearLayout>-->
         </androidx.cardview.widget.CardView>
@@ -128,7 +173,7 @@
                     android:id="@+id/cloudcata_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/wiki" />
+                    android:src="@drawable/k11" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -173,7 +218,7 @@
                     android:id="@+id/badge_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/wiki" />
+                    android:src="@drawable/k2" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -218,7 +263,7 @@
                     android:id="@+id/customnum_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/wiki" />
+                    android:src="@drawable/k3" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -229,7 +274,7 @@
             android:id="@+id/other_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/card3"
             app:layout_constraintVertical_chainStyle="spread"
@@ -248,17 +293,27 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
                     <!-- 在学词书 -->
                     <TextView
                         android:id="@+id/wiki_cloud"
                         android:layout_width="match_parent"
+                        android:layout_weight="7"
                         android:layout_height="wrap_content"
                         android:background="@drawable/list_item_background"
-                        android:drawableStart="@drawable/setting"
+                        android:drawableStart="@drawable/w0"
                         android:padding="16dp"
                         android:text="wiki"
                         android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/enter"
+                        android:background="@drawable/list_item_background"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -274,17 +329,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
                     <!-- 在学词书 -->
                     <TextView
                         android:id="@+id/cloud_worship"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="7"
                         android:background="@drawable/list_item_background"
-                        android:drawableStart="@drawable/setting"
+                        android:drawableStart="@drawable/w1"
                         android:padding="16dp"
                         android:text="关于云的故事"
                         android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/enter"
+                        android:background="@drawable/list_item_background"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -299,6 +363,7 @@
                 android:layout_marginStart="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:orientation="horizontal"
                     android:layout_height="wrap_content">
                     <!-- 近日已学 -->
                     <TextView
@@ -306,13 +371,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/list_item_background"
-                        android:drawableStart="@drawable/wiki"
+                        android:layout_weight="7"
+                        android:drawableStart="@drawable/w3"
                         android:padding="16dp"
                         android:text="徽章墙"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/recently_learned"
                         tools:layout_editor_absoluteX="17dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/enter"
+                        android:background="@drawable/list_item_background"/>
                 </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -329,6 +403,7 @@
                 android:layout_marginBottom="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:orientation="horizontal"
                     android:layout_height="wrap_content">
                     <!-- 全部已学 -->
                     <TextView
@@ -338,11 +413,20 @@
                         android:background="@drawable/list_item_background"
                         android:drawableStart="@drawable/setting"
                         android:padding="16dp"
+                        android:layout_weight="7"
                         android:text="创建我的分类法"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/all_learned"
                         app:layout_constraintTop_toBottomOf="@+id/other_options"
                         tools:layout_editor_absoluteX="18dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="2"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/enter"
+                        android:background="@drawable/list_item_background"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

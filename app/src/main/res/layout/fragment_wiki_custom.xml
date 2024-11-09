@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/okcomputer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:layout_height="match_parent">
+
+
+<TextView
+    android:id="@+id/title_abc"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:fontFamily="@font/d"
+    android:gravity="center_horizontal"
+    android:padding="4dp"
+    android:text="云朵自定义"
+    android:textColor="@android:color/black"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/btn_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/title_abc"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toTopOf="@+id/title_abc" />
+
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/title_abc"
+    android:background="@color/okcomputer"
     android:scrollbarAlwaysDrawHorizontalTrack="false"
     android:scrollbars="none"
     tools:context=".fragments.wikifragments.WikiStoryFragment">
@@ -17,21 +57,7 @@
         <!-- TODO: Update blank fragment layout -->
 
 
-        <TextView
-            android:id="@+id/title_abc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/d"
-            android:gravity="center_horizontal"
-            android:padding="4dp"
-            android:text="云朵自定义"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
 
         <!--<TextView
@@ -134,7 +160,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/忧伤"
+                            android:text="      笔者从前有个想法，是在了解云朵分类法的时候产生的。当时看到云朵名字，感觉非常繁杂，无论中文还是英文，文绉绉。所以笔者就萌生了一个想法，也许我们可以创建自己的分类法，也许我们可以给云取任何我们自己喜欢的名字。不需要追求分类上的区分性，只要自己满意就好。所以这一个板块大致就是产生于这样一个初衷，读者可以在这里定义自己的云朵种类和云属"
                             android:padding="16dp"
                             android:letterSpacing="0.1"
                             android:textSize="16sp"/>
@@ -185,6 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingBottom="30dp"
                 android:padding="16dp">
 
                 <TextView
@@ -456,17 +483,6 @@
         </androidx.cardview.widget.CardView>
 
 
-        <ImageButton
-            android:id="@+id/btn_quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_white_whatshot"
-            app:layout_constraintBottom_toBottomOf="@+id/title_abc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/title_abc"
-            app:layout_constraintTop_toTopOf="@+id/title_abc" />
-
 
 
         <!--<ImageButton
@@ -497,3 +513,5 @@
 
 
 </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

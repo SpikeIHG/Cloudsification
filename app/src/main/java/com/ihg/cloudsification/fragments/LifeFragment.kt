@@ -1,5 +1,9 @@
 package com.ihg.cloudsification.fragments
 
+import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -8,7 +12,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,6 +38,8 @@ class LifeFragment : Fragment() {
     private lateinit var lifeManager: LifeManager
     private lateinit var sharedViewModel: SharedViewModel
     private  lateinit var  careerManager: CareerManager
+    private  lateinit var mPieChart: PieChart
+    private lateinit var cloud_count : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -54,7 +62,8 @@ class LifeFragment : Fragment() {
         lifeManager = LifeManager(requireContext())
         careerManager = CareerManager(requireContext())
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-
+        cloud_count = view.findViewById(R.id.count_cloud)
+        cloud_count.text = "你一共记录了"+ careerManager.getAllAtlasNum() +"朵云，种类分布如下"
         val overall_time = view.findViewById<TextView>(R.id.overall)
         val days = lifeManager.getDaydiff(LocalDate.now())
         if(days.second == -1L)
@@ -67,22 +76,27 @@ class LifeFragment : Fragment() {
             overall_time.text = "今天是拾云的第"+dcount+"天"
         })
 
-        val mPieChart = view.findViewById<PieChart>(R.id.piechart)
+         mPieChart = view.findViewById<PieChart>(R.id.piechart)
         val color = arrayOf(
-            "#56B7F1",
-            "#FE6DA8",
-            "#CDA67F",
-            "#FED70E"
+            "#BDB5D7",
+            "#A0CDCC",
+            "#F4BAAF",
+            "#84BB9F",
+            "#FAEEC7",
+            "#CC5F5A",
+            "#B3CAD8"
         )
         careerManager.getAllGeneNumArray() .forEachIndexed { index,value ->
-            mPieChart.addPieSlice(PieModel(value.first, value.second.toFloat(), Color.parseColor(color[index % 4])))
+            mPieChart.addPieSlice(PieModel(value.first, value.second.toFloat(), Color.parseColor(color[index % 7])))
         }
 
 
         val mCubicValueLineChart = view.findViewById(R.id.cubiclinechart) as ValueLineChart
 
         val series = ValueLineSeries()
-        series.color = -0xa9480f
+       //
+ //       series.color = -0xa9480f
+        series.color =  R.color.okcomputer
 
         val month_count = view.findViewById<TextView>(R.id.record_month_count)
 
@@ -91,11 +105,39 @@ class LifeFragment : Fragment() {
         val owm = month_now.toString()
         val myseries = mutableListOf<ValueLinePoint>()
 
+
+        val share_btn = view.findViewById<ImageButton>(R.id.share)
+        share_btn.setOnClickListener {
+            val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Copied Link", "https://spikeihg.github.io/2024/09/02/%E4%BA%91%E5%90%96/")
+            clipboard.setPrimaryClip(clip)
+
+            // 显示提示信息
+            Toast.makeText(context, "分享链接已复制到剪切板  ^ω^", Toast.LENGTH_SHORT).show()
+
+
+        }
+
         for(index in 11 downTo 0)
         {
             val months = month_now.minusMonths(index.toLong())
             myseries.add(ValueLinePoint(months.format(DateTimeFormatter.ofPattern("yyyy-MM")), lifeManager.Monthdiff(months).toFloat()))
         }
+
+        val lastword = view.findViewById<ImageButton>(R.id.imageButton)
+        lastword.setOnClickListener {
+            val dialogView: View = layoutInflater.inflate(R.layout.dialog_last_word, null)
+            val dialog = AlertDialog.Builder(context)
+                .setView(dialogView)  // 设置自定义布局
+                .create()
+
+
+
+            dialog.show()
+
+
+        }
+
 
 
         confirm_btn.setOnClickListener {
@@ -145,15 +187,37 @@ class LifeFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d("RR","this is the time to st")
+
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         val time_now = lifeManager.getDaydiff(LocalDate.now())
         if(time_now.first)
-            sharedViewModel.setCloudCount(time_now.second.toString())
+            sharedViewModel.setTimeDiff(time_now.second.toString())
 
+        val color = arrayOf(
+            "#BDB5D7",
+            "#A0CDCC",
+            "#F4BAAF",
+            "#84BB9F",
+            "#FAEEC7",
+            "#CC5F5A",
+            "#B3CAD8"
+        )
+        mPieChart.clearChart()
+        careerManager.getAllGeneNumArray() .forEachIndexed { index,value ->
+            mPieChart.addPieSlice(PieModel(value.first, value.second.toFloat(), Color.parseColor(color[index % 7])))
+        }
 
+        Log.d("RR","this is the time to resume")
 
+        cloud_count.text = "你一共记录了"+ careerManager.getAllAtlasNum() +"朵云，种类分布如下"
 
     }
 

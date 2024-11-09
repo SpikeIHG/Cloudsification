@@ -57,5 +57,8 @@ dependencies {
     implementation libs.eazegraph
     implementation libs.library
 
+    implementation libs.okhttp
+    implementation libs.core.splashscreen
+
 
 }

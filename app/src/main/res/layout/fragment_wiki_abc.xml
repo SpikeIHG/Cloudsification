@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/okcomputer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+<TextView
+    android:id="@+id/title_abc"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:fontFamily="@font/d"
+    android:gravity="center_horizontal"
+    android:padding="4dp"
+    android:text="云朵小百科"
+    android:textStyle="bold"
+    android:textColor="@android:color/black"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:background="@color/transparent"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/title_abc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_abc" />
+
+
+
+
+
+
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@color/okcomputer"
     android:scrollbarAlwaysDrawHorizontalTrack="false"
     android:scrollbars="none"
+    app:layout_constraintTop_toBottomOf="@+id/title_abc"
+        app:layout_constraintBottom_toBottomOf="parent"
+
     tools:context=".fragments.wikifragments.WikiAbcFragment">
 
 
@@ -16,21 +67,6 @@
             android:padding="16dp">
             <!-- TODO: Update blank fragment layout -->
 
-
-        <TextView
-                android:id="@+id/title_abc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/d"
-                android:gravity="center_horizontal"
-                android:padding="4dp"
-                android:text="云朵小百科"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -47,7 +83,7 @@
             app:layout_constraintBottom_toTopOf="@+id/abc_ct"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_abc" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/bookmark_catagory"
@@ -109,13 +145,13 @@
             android:id="@+id/abc_ct"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="22dp"
 
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_abc">
+            app:layout_constraintTop_toBottomOf="@+id/bookmark_wiki">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -128,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.1"
                     android:padding="10dp"
+                    android:textIsSelectable="true"
                     android:text="@string/wiki云的概述"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -155,6 +192,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     android:gravity=""
                     android:letterSpacing="0.1"
                     android:padding="10dp"
@@ -194,6 +232,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:letterSpacing="0.1"
+                    android:textIsSelectable="true"
                     android:text="@string/十大云属"
                     android:textSize="16sp" />
 
@@ -202,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:letterSpacing="0.1"
-                    android:text="可以点击每一类查看具体云目即亚种 ^ω^"
+                    android:text="可以点击每一类查看具体云目即亚种 注意划到前面点击哦^ω^ "
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -252,7 +291,7 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:text="下面是一些样图，出自作者自己，应该没有侵权问题(^ω^)"/>
+                    android:text="下面些样图，出自笔者自己，摄影水平有限，不过应该没有侵权问题(^ω^)"/>
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -884,17 +923,6 @@
         </androidx.cardview.widget.CardView>
 
 
-        <ImageButton
-            android:id="@+id/btn_quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_white_whatshot"
-            app:layout_constraintBottom_toBottomOf="@+id/title_abc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title_abc" />
-
-
 
             <!--<ImageButton
                 android:id="@+id/btn_pop"
@@ -922,5 +950,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
 </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

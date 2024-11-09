@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/okcomputer"
+    android:layout_width="match_parent">
+
+
+
+
+
+
+
+
+<TextView
+    android:id="@+id/title_abc"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:fontFamily="@font/d"
+    android:gravity="center_horizontal"
+    android:padding="4dp"
+    android:text="关于云的故事"
+    android:textColor="@android:color/black"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageButton
+        android:id="@+id/btn_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:background="@color/transparent"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/title_abc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/title_abc"
+        app:layout_constraintTop_toTopOf="@+id/title_abc" />
+
+
+
+
+
+
+
+    <ScrollView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_abc"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     android:background="@color/grey"
     android:scrollbarAlwaysDrawHorizontalTrack="false"
     android:scrollbars="none"
@@ -13,24 +67,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/okcomputer"
         android:padding="24dp">
         <!-- TODO: Update blank fragment layout -->
 
 
-        <TextView
-            android:id="@+id/title_abc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/d"
-            android:gravity="center_horizontal"
-            android:padding="4dp"
-            android:text="关于云的故事"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
         <!--<TextView
@@ -103,13 +144,13 @@
             android:id="@+id/abc_ct"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             app:cardCornerRadius="22dp"
 
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_abc">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="wrap_content"
@@ -138,6 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:letterSpacing="0.1"
+                        android:textIsSelectable="true"
                         android:text="@string/story云的故事"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -181,6 +223,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textIsSelectable="true"
                         android:text="@string/忧伤"
                         android:padding="16dp"
                         android:background="@color/lightblue"
@@ -1272,18 +1315,6 @@
         </androidx.cardview.widget.CardView>
 
 
-        <ImageButton
-            android:id="@+id/btn_quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:src="@drawable/ic_white_whatshot"
-            app:layout_constraintBottom_toBottomOf="@+id/title_abc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/title_abc"
-            app:layout_constraintTop_toTopOf="@+id/title_abc" />
-
-
 
         <!--<ImageButton
             android:id="@+id/btn_pop"
@@ -1313,3 +1344,6 @@
 
 
 </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

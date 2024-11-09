@@ -4,7 +4,7 @@
     android:id="@+id/clParentActivityMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey">
+    android:background="#EDEDF4">
     <FrameLayout
         android:id="@+id/fragment_container1"
         android:layout_width="match_parent"

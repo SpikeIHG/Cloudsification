@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/m_lightblue"
+    android:background="@drawable/bg_see_diglog"
     android:padding="16dp">
 
     <ImageView
@@ -50,7 +50,7 @@
                 android:layout_marginTop="10dp"
                 android:autofillHints="积雨云,层积云,高积云"
                 android:gravity="center"
-                android:hint="这是一朵什么云呢,测试用"
+                android:hint="已经过去多久了呢"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="16sp"
@@ -64,24 +64,35 @@
                 android:id="@+id/classify_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/d"
-                android:text="识别"
+                android:text="本地识别"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/spinner1"
-                app:layout_constraintBottom_toTopOf="@id/dialog_description"
+                app:layout_constraintBottom_toTopOf="@id/classify_btn2"
                 app:layout_constraintEnd_toStartOf="@+id/spinner1"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/spinner1"
-                app:layout_constraintWidth_percent="0.3"
-                tools:layout_editor_absoluteY="109dp" />
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <Button
+                android:id="@+id/classify_btn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="GPT识别"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/spinner1"
+                app:layout_constraintEnd_toStartOf="@+id/spinner1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/classify_btn"
+                app:layout_constraintVertical_bias="0.333"
+                app:layout_constraintWidth_percent="0.3" />
 
             <Spinner
                 android:id="@+id/spinner1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:padding="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/dialog_description"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -93,9 +104,9 @@
                 android:id="@+id/dialog_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edit_bg"
-                android:hint="坐在你身边看云，我看得更清楚(记录时刻 ^ω^)"
+                android:hint="    坐在你身边看云，我看得更清楚(可以在这里留下记录 ^ω^)"
                 android:letterSpacing="0.05"
                 android:overScrollMode="ifContentScrolls"
                 android:padding="8dp"
@@ -105,7 +116,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+                app:layout_constraintTop_toBottomOf="@+id/classify_btn2" />
 
 
             <!--<AutoCompleteTextView

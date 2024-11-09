@@ -145,10 +145,10 @@ class WikiAbcFragment : Fragment(), OnTagTapListener {
             try {
                 for (i in imageViews.indices) {
                     inputStream = assetManager?.open(imageNames[i]) // 读取 assets 文件
-                    //val bitmap = BitmapFactory.decodeStream(inputStream) // 将 InputStream 转换为 Bitmap
+                    val bitmap = BitmapFactory.decodeStream(inputStream) // 将 InputStream 转换为 Bitmap
                     /*imageViews[i].setImageBitmap(bitmap)*/
                     Glide.with(this)
-                        .load(inputStream)
+                        .load(bitmap)
                         .into(imageViews[i])
                 }
 

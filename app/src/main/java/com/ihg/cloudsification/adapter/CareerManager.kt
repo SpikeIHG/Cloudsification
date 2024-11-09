@@ -9,6 +9,11 @@ class CareerManager(context: Context) {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("YourCareer", Context.MODE_PRIVATE)
 
 
+    fun initTotalNum(num : Long){
+        sharedPreferences.edit().putLong(atlas_name,num).apply()
+    }
+
+
     fun addSpecifiedGeneCloud(key: String){
         val previous_num = sharedPreferences.getLong(key,0)
         sharedPreferences.edit().putLong(key,previous_num+1).apply()
@@ -73,7 +78,7 @@ class CareerManager(context: Context) {
 
         // 如果 maxPair 不为空，返回对应的 gene，否则返回默认值
         if(maxPair?.second == 0L) return ""
-        return maxPair?.first ?: "为什么查不到呢呜呜呜"
+        return maxPair?.first ?: "查不到呜呜~~"
     }
 
 

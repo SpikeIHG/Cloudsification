@@ -21,6 +21,8 @@
     <color name="m_lightorange">#F0DED4</color>
     <color name="m_lightblue">#B3CAD8</color>
     <color name="lightblue">#ADD8E6</color>
+    <color name="c3">#B3CAD8</color>
+    <color name="okcomputer">#EDEDF4</color>
 
 
 </resources>

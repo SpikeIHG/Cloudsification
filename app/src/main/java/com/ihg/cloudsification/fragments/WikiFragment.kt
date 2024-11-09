@@ -1,5 +1,6 @@
 package com.ihg.cloudsification.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -42,6 +43,7 @@ class WikiFragment : Fragment()  {
     private lateinit var sharedViewModel: SharedViewModel
     private  lateinit var  mycaeermanager : CareerManager
     private lateinit var badgeManager: BadgeManager
+    private  lateinit var  cloud_most_recorded : TextView
 
     private var fragmentNumber by FragmentArgumentDelegate<Number>()
 private lateinit var preferencesManager: PreferencesManager
@@ -84,7 +86,7 @@ private lateinit var preferencesManager: PreferencesManager
         gene_num.text = preferencesManager.getTotalNum().toString()  + " 种"
         val cloud_num = view.findViewById<TextView>(R.id.howmanycloud)
         val badge_num = view.findViewById<TextView>(R.id.howmanybadge)
-        val cloud_most_recorded = view.findViewById<TextView>(R.id.whichcloud)
+         cloud_most_recorded = view.findViewById<TextView>(R.id.whichcloud)
         if(mycaeermanager.getMaxNumGene().isNotEmpty())
             cloud_most_recorded.text = mycaeermanager.getMaxNumGene()
         else
@@ -112,10 +114,84 @@ private lateinit var preferencesManager: PreferencesManager
             cloud_most_recorded.text = most
         })
 
+
+        val instruction = view.findViewById<ImageButton>(R.id.imageButton)
+        instruction.setOnClickListener {
+
+            val dialogView: View = layoutInflater.inflate(R.layout.dialog_wiki_instruction, null)
+            val dialog = AlertDialog.Builder(context)
+                .setView(dialogView)  // 设置自定义布局
+                .create()
+
+
+
+            dialog.show()
+        }
+
+
+
         val cnum_btn = view.findViewById<ImageButton>(R.id.cloudnum_btn)
-        val mostcloud_btn = view.findViewById<ImageButton>(R.id.clouds_ccc)
+        val mostcloud_btn = view.findViewById<ImageButton>(R.id.cloudcata_btn)
         val badgenum_btn = view.findViewById<ImageButton>(R.id.badge_btn)
         val customnum_btn = view.findViewById<ImageButton>(R.id.customnum_btn)
+
+        val c1 = view.findViewById<CardView>(R.id.card1)
+        val c2 = view.findViewById<CardView>(R.id.card2)
+        val c3 = view.findViewById<CardView>(R.id.card3)
+        val c4 = view.findViewById<CardView>(R.id.card4)
+        c1.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("targetPage", 2)
+            parentFragmentManager.setFragmentResult("requestKey", bundle)
+        }
+        c2.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("targetPage", 2)
+            parentFragmentManager.setFragmentResult("requestKey", bundle)
+        }
+        c3.setOnClickListener {
+            val currentFragment = parentFragmentManager.findFragmentById(R.id.fragment_container1)
+            if(currentFragment !is WikiBadgeFragment){
+                val newFragment = WikiBadgeFragment() // 创建新的Fragment实例
+                val transaction = parentFragmentManager.beginTransaction()
+                transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                transaction.replace(R.id.fragment_container1, newFragment) // 替换现有的Fragment
+                transaction.addToBackStack(null) // 添加到回退栈
+                transaction.commit()
+                hideViews();
+            }
+        }
+        c4.setOnClickListener {
+            val currentFragment = parentFragmentManager.findFragmentById(R.id.fragment_container1)
+            if(currentFragment !is WikiCustomFragment){
+                val newFragment = WikiCustomFragment() // 创建新的Fragment实例
+                val transaction = parentFragmentManager.beginTransaction()
+                transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                transaction.replace(R.id.fragment_container1, newFragment) // 替换现有的Fragment
+                transaction.addToBackStack(null) // 添加到回退栈
+                transaction.commit()
+                hideViews();
+            }
+
+        }
+        cnum_btn.setOnClickListener {
+            // 跳转到指定页，比如目标页是第4页（索引从0开始）
+            val bundle = Bundle()
+            bundle.putInt("targetPage", 2)
+            parentFragmentManager.setFragmentResult("requestKey", bundle)
+        }
+
+        mostcloud_btn.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("targetPage", 2)
+            parentFragmentManager.setFragmentResult("requestKey", bundle)
+        }
+
+
+
+
+
+
 
         badgenum_btn.setOnClickListener {
             val currentFragment = parentFragmentManager.findFragmentById(R.id.fragment_container1)
@@ -159,8 +235,6 @@ private lateinit var preferencesManager: PreferencesManager
                 transaction.replace(R.id.fragment_container1, newFragment) // 替换现有的Fragment
                 transaction.addToBackStack(null) // 添加到回退栈
                 transaction.commit()
-
-
 
                 hideViews();
             }
@@ -236,7 +310,6 @@ private lateinit var preferencesManager: PreferencesManager
                 transaction.commit()
                 hideViews();
 
-                refresh();
             }
             else
             {
@@ -301,6 +374,8 @@ private lateinit var preferencesManager: PreferencesManager
     override fun onResume() {
         super.onResume()
         Log.d("CCCCCCCXXXXX","4")
+        cloud_most_recorded.text = mycaeermanager.getMaxNumGene()
+
 
     }
 

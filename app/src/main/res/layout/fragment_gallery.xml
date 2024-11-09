@@ -47,11 +47,23 @@
         app:layout_constraintTop_toTopOf="@+id/gallery_title" />
 
 
+    <ImageButton
+        android:id="@+id/infoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/info_white"
+        app:layout_constraintBottom_toBottomOf="@+id/gallery_title_scd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gallery_title" />
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_round_rect"
-        android:layout_marginTop="90dp">
+        android:background="@drawable/shape01"
+        android:layout_marginTop="100dp">
 
 
 

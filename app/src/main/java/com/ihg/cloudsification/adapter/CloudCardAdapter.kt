@@ -74,9 +74,30 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
             {
                 holder.desc.text = items[position].description
             }
+
+            if(item.location == "")
+            {
+                holder.location.text = "宁静号"
+            }
+            else
+            {
+                holder.location.text = items[position].location
+            }
+
+            if(item.time == "")
+            {
+                holder.time_.text = "某个美好的晴天"
+            }
+            else
+            {
+                holder.time_.text = items[position].time
+            }
+
+
+
             holder.labelview.text = items[position].tag
-            holder.time_.text = items[position].time
-            holder.location.text = items[position].location
+           // holder.time_.text = items[position].time
+           // holder.location.text = items[position].location
 
 
             Glide.with(holder.desc.context)
@@ -108,12 +129,12 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                     .load(item.imageUri)
                     .into(dialogImageView)
 
-                val suggestions = arrayOf("选项1", "选项2", "选项3", "选项4")
+               /* val suggestions = arrayOf("选项1", "选项2", "选项3", "选项4")
                 val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
                     holder.itemView.context,
                     android.R.layout.simple_dropdown_item_1line,
                     suggestions
-                )
+                )*/
              /*   val autoCompleteTextView: AutoCompleteTextView =
                     dialogView.findViewById(R.id.autoCompleteTextView)
                 autoCompleteTextView.setAdapter(adapter)
@@ -148,8 +169,9 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                 val spinner: Spinner = dialogView.findViewById(R.id.spinner0)
                 spinner.adapter = adapter_sp
 
-
-
+                val selectedItem = item.tag
+                val positionx = adapter_sp.getPosition(selectedItem)
+                spinner.setSelection(positionx)
                 val dialog = Dialog(holder.itemView.context)
                 dialog.setContentView(dialogView)
                 /* .setPositiveButton("Close") { dialog, _ -> dialog.dismiss() }
@@ -172,6 +194,14 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
                     val newDescription = dialogDescriptionEdit.text.toString()
 
                     val newtt = spinner.selectedItem
+                    Log.d("SSS",newtt.toString())
+
+                    if(!newtt.toString().equals(item.tag))
+                    {
+                        careerManager.addSpecifiedGeneCloud(newtt.toString())
+                        careerManager.declineSpecifiedGeneCloud(item.tag)
+                    }
+
                     item.tag = newtt.toString()
                     item.description = newDescription
                     notifyItemChanged(position)
@@ -200,27 +230,17 @@ class CloudCardAdapter(private var items: MutableList<CloudCard>, private val at
             if (index_ != RecyclerView.NO_POSITION) {
                 // 从数据源中删除项
                 atlasbase.deleteItem(items[index_].id)
-                Log.d("DELETE",items[index_].imageUri)
 
                 val file = File(items[index_].imageUri)
                 if (file.exists()) {
-                    Log.d("DELETE",items[index_].imageUri)
-                    if (file.delete()) {
-                        Log.d("DELETE","成功")
-
-                    } else {
-                        Log.d("DELETE","失败")
-
-                    }
-                } else {
-                   Log.d("DELETE","没有")
+                   file.delete()
                 }
-
+                if(!careerManager.declineSpecifiedGeneCloud(items[index_].tag))
+                    Log.d("XX","可以的负数")
                 items.removeAt(index_)
                 // 通知 RecyclerView 更新
                 notifyItemRemoved(index_)
-                if(!careerManager.declineSpecifiedGeneCloud(items[index_].tag))
-                    Log.d("XX","可以的负数")
+
                 sharedViewModelsub.setCloudCount(careerManager.getAllAtlasNum().toString())
 
                 if (index_ != (items.size + 1)) {

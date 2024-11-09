@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.wikifragments.WikiBadgeFragment"
-    android:background="@color/lightblue">
+    android:background="@color/okcomputer">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -19,7 +19,7 @@
         android:padding="4dp"
         android:text="我的徽章墙"
         android:textColor="@android:color/black"
-        android:textSize="28sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,10 +28,11 @@
         android:id="@+id/btn_quit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:src="@drawable/ic_white_whatshot"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/back"
+        android:background="@color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/title_abc"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="@id/title_abc"
         app:layout_constraintTop_toTopOf="@+id/title_abc" />
 

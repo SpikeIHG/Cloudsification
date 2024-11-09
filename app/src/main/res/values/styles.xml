@@ -8,6 +8,24 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="Theme.Launcher" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- 启动画面背景颜色 -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- 启动画面的图标 -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launchera</item>
+        <!-- 图标的动画持续时间（可选） -->
+        <item name="windowSplashScreenAnimationDuration">500</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+
+
+
+
+
+
+
     <style name="ChiliPhotoPicker.Dark" parent="Theme.MaterialComponents.NoActionBar.Bridge">
         <item name="pickerBackgroundColor">@color/background_dark</item>
         <item name="pickerPrimaryColor">@color/text_primary_dark</item>

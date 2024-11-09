@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewpager.widget.ViewPager
 import com.example.database.CloudCardDatabaseHelper
 import com.fridayof1995.tabanimation.SnapTabLayout
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //val splashScreen = installSplashScreen()
         // 准备数据库
         dbHelper = CloudCardDatabaseHelper(this,"DouDou",1)
 
@@ -44,6 +45,11 @@ class MainActivity : AppCompatActivity()  {
 
         viewPager.adapter = viewPagerAdapter
 
+        supportFragmentManager.setFragmentResultListener("requestKey", this) { _, bundle ->
+            val targetPage = bundle.getInt("targetPage")
+            viewPager.setCurrentItem(targetPage, true) // 跳转到指定页面
+        }
+
         val numTab = intent.getIntExtra("numOfTabs", 3)
 
         // 设置tab bar的动画效果以及对应图标
@@ -57,7 +63,7 @@ class MainActivity : AppCompatActivity()  {
         tabLayout.startButton.setImageResource(R.drawable.wiki)         //  wiki icon
         tabLayout.endButton.setImageResource(R.drawable.setting)
         // 设置 图标变换的颜色
-        tabLayout.setTransitionIconColors(ContextCompat.getColor(this@MainActivity, android.R.color.white)
+        tabLayout.setTransitionIconColors(ContextCompat.getColor(this@MainActivity, android.R.color.black)
                 , ContextCompat.getColor(this@MainActivity, R.color.colorGrey))
 
 
@@ -66,7 +72,7 @@ class MainActivity : AppCompatActivity()  {
         // 修改渐变颜色
         tabLayout.setVpTransitionBgColors(ContextCompat.getColor(this@MainActivity, R.color.wiki_fragment_color)
                 , ContextCompat.getColor(this@MainActivity, R.color.myblue)
-                , ContextCompat.getColor(this@MainActivity, R.color.setting_fragment_color))
+                , ContextCompat.getColor(this@MainActivity, R.color.c3))
 
 
         // 绑定viewpager 同时设定监听事件 主页面
