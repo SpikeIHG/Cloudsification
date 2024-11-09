@@ -191,9 +191,14 @@ Fragment 的生命周期与其宿主 Activity 的生命周期相关联。当 Act
 ```
 布局 —— recyclerview弹出 
 查看fragment
-数据库 Sqlite
+数据库 Sqlite  entity  申请位置权限  得知当前所在位置经纬度
 
-调相册 照片 该权限 清单文件 动态申请权限
+调相册 照片 该权限 清单文件 动态申请权限   intent的用法 
 
 ```
 
+
+模型部署问题
+[模型部署](https://github.com/tensorflow/examples/tree/master/lite)
+
+* 实现一个分享链接的功能 如果可以的话
