@@ -408,11 +408,11 @@ Log.d("LABEL",labelArray.joinToString())
 
 
        // val BASE_URL = "https://www.gpt-plus.top"
-     //val API_KEY = "sk-1D3UVT2nLXQcPuPNasQ7m9xpF6yDXOg0iSDG6bGefcHbKtwc"
-        //val API_KEY = "sk-zk260d0b15ad823e7a10d33950800b7fe6b672e02a6eb836"
+     //val API_KEY = "sk-1D3UVT2nLXQcPuPNasQ7m9xpF6yDXOg0iSDG6bGefcHbKtwcgr"
+        //val API_KEY = "sk-zk260d0b15ad823e7a10d33950800b7fe6b672e02a6eb836ab"
         //val BASE_URL = "https://api.zhizengzeng.com/"
         val BASE_URL = "https://api.chatanywhere.tech"
-        val API_KEY = "sk-NzaxD7BDx7m7ealq2RyThpTVdlh1UEgDuTbiYft2bHH8jVQH"
+        val API_KEY = "sk-NzaxD7BDx7m7ealq2RyThpTVdlh1UEgDuTbiYft2bHH8jVQHabc"
         val MODEL = "gpt-4o-2024-08-06"
         val PROMPT = """分析图中是什么类型的云，返回值是两个字符串：第一个字符串为genera（高积云、高层云、积雨云、卷积云、卷云、卷层云、积云、雨层云、层积云、层云）或“不是天空”；
 如果genera是卷云，第二个字符串为毛状云、钩状云、密云、堡状云、絮状云中的一个，或为空字符串
