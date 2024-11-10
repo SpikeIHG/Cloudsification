@@ -37,7 +37,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.database.CloudCardDatabaseHelper
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.ihg.cloudsification.adapter.CloudCardAdapter
 import com.ihg.cloudsification.FragmentArgumentDelegate
 import com.ihg.cloudsification.MainActivity
@@ -53,7 +52,6 @@ import lv.chi.photopicker.PhotoPickerFragment
 import org.json.JSONArray
 import org.json.JSONObject
 import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.task.core.BaseOptions
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import java.io.ByteArrayOutputStream

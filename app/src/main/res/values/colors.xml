@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
 
     <color name="colorGrey">#212121</color>
 
-    <color name="mypurple">#9370DB</color>
     <color name="myblue">#0f1134</color>
-    <color name="mygrey">#9370DB</color>
-    <color name="mygreen">#9370DB</color>
-
-    <color name="midnightblue">#191970</color>
 
     <color name="grey">#BFC2CB</color>
-    <color name="card_color">#ADD8E6</color>
     <color name="wiki_fragment_color">#C9B4C7</color>  <!---->
-    <color name="atlas_fragment_color">#191970</color>
-    <color name="setting_fragment_color">#8D8FA4</color>
-    <color name="m_lightorange">#F0DED4</color>
     <color name="m_lightblue">#B3CAD8</color>
     <color name="lightblue">#ADD8E6</color>
     <color name="c3">#B3CAD8</color>

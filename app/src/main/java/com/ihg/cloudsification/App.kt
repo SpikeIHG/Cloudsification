@@ -10,14 +10,12 @@ import android.graphics.BitmapFactory
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
 import com.example.database.CloudCardDatabaseHelper
 
 import com.ihg.cloudsification.adapter.BadgeManager
 import com.ihg.cloudsification.adapter.CareerManager
 import com.ihg.cloudsification.adapter.GlideImageLoader
 import com.ihg.cloudsification.adapter.PreferencesManager
-import com.ihg.cloudsification.adapter.SharedViewModel
 import com.ihg.cloudsification.entity.CloudCard
 import lv.chi.photopicker.ChiliPhotoPicker
 import java.io.File
