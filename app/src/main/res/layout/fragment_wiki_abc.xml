@@ -237,13 +237,25 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/cloud_atlas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:letterSpacing="0.1"
-                    android:text="可以点击每一类查看具体云目即亚种 注意划到前面点击哦^ω^ "
+                    android:text="国际气象组织云图网址(点击复制)"
                     android:gravity="center"
                     android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:letterSpacing="0.1"
+                    android:text="下面标签可以滑动。可以点击每一个标签查看具体云目即亚种 注意划动到前面点击哦^ω^ "
+                    android:gravity="center"
+                    android:textSize="16sp"
                     android:textStyle="bold"/>
 
                 <com.magicgoop.tagsphere.TagSphereView
@@ -276,23 +288,29 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity=""
-                    android:letterSpacing="0.1"
-                    android:padding="10dp"
-                    android:text="@string/wiki云的分类"
-                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="6dp"
                     android:textSize="18sp"
-                    android:gravity="center"
+                    android:gravity=""
+                    android:letterSpacing="0.1"
                     android:textStyle="bold"
-                    android:text="下面些样图，出自笔者自己，摄影水平有限，不过应该没有侵权问题(^ω^)"/>
+                    android:text="  下面是一些样图，笔者自己摄影水平有限，只作为例子参考见谅见谅(^ω^)"/>
 
+
+
+                <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity=""
+                   android:letterSpacing="0.1"
+                   android:padding="10dp"
+                    android:textStyle="italic"
+                    android:fontFamily="@font/d"
+                   android:text="这里是横向滑动(糟糕的没有任何指示的奇怪UI布局)"
+                   android:textSize="16sp" />
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

@@ -2,8 +2,7 @@ package com.ihg.cloudsification.adapter
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.MeshSpecification.Varying
-import android.util.Log
+
 
 class PreferencesManager(context: Context) {
     private  val suffix = "_Desc"
@@ -30,7 +29,7 @@ class PreferencesManager(context: Context) {
 
     fun getSpecies(key: String): Array<String>? {
         val combinedString = sharedPreferences.getString(key, null)
-        if(combinedString == "")return null
+        if(combinedString == "")return arrayOf()
         return combinedString?.split(",")?.toTypedArray()
     }
 

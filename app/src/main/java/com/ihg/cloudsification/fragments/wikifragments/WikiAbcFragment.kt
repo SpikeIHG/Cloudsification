@@ -1,6 +1,9 @@
 package com.ihg.cloudsification.fragments.wikifragments
 
 import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -76,6 +80,16 @@ class WikiAbcFragment : Fragment(), OnTagTapListener {
 
 
 
+        val site = view.findViewById<TextView>(R.id.cloud_atlas)
+        site.setOnClickListener {
+            val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Copied Link", "https://cloudatlas.wmo.int/en/home.html")
+            clipboard.setPrimaryClip(clip)
+
+            // 显示提示信息
+            Toast.makeText(context, "官网链接已复制到剪切板  ^ω^", Toast.LENGTH_SHORT).show()
+
+        }
 
 
 

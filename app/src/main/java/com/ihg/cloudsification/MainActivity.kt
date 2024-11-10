@@ -1,17 +1,14 @@
 package com.ihg.cloudsification
 
-import android.animation.ArgbEvaluator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewpager.widget.ViewPager
 import com.example.database.CloudCardDatabaseHelper
 import com.fridayof1995.tabanimation.SnapTabLayout
 import com.ihg.cloudsification.fragments.GalleryFragment
 import com.ihg.cloudsification.fragments.LifeFragment
 import com.ihg.cloudsification.fragments.WikiFragment
-import org.tensorflow.lite.Interpreter
 
 
 class MainActivity : AppCompatActivity()  {
@@ -22,13 +19,11 @@ class MainActivity : AppCompatActivity()  {
 
     private lateinit var dbHelper: CloudCardDatabaseHelper
 
-    private lateinit var tflite: Interpreter
-
-    val mArgbEvaluator: ArgbEvaluator = ArgbEvaluator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         //val splashScreen = installSplashScreen()
         // 准备数据库
@@ -50,7 +45,7 @@ class MainActivity : AppCompatActivity()  {
             viewPager.setCurrentItem(targetPage, true) // 跳转到指定页面
         }
 
-        val numTab = intent.getIntExtra("numOfTabs", 3)
+
 
         // 设置tab bar的动画效果以及对应图标
         val tabLayout = findViewById<SnapTabLayout>(R.id.tabLayout)
@@ -103,15 +98,6 @@ class MainActivity : AppCompatActivity()  {
     fun getDatabaseHelper(): CloudCardDatabaseHelper {
         return dbHelper
     }
-
-
-
-
-
-
-
-
-
 
 
 

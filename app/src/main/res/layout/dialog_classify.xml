@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_bg"
-                android:hint="    坐在你身边看云，我看得更清楚(可以在这里留下记录 ^ω^)"
+                android:hint="    坐在你身边看云，我看得更清楚(可以在这里留下你自己的记录 (^ω^)"
                 android:letterSpacing="0.05"
                 android:overScrollMode="ifContentScrolls"
                 android:padding="8dp"

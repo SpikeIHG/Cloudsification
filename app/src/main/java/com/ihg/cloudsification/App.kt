@@ -76,9 +76,9 @@ class App: Application() {
             val sharedPreferences_stat = CareerManager(this)
             val badgeManager = BadgeManager(this)
            preferencesManager.saveGeneraSpecies("棉花糖云", arrayOf("原味棉花糖云","草莓味棉花糖云"))
-            preferencesManager.saveDescription("棉花糖云","蓬松的积云就像是一朵朵漂浮的巨型棉花糖，若是傍晚时分看见，云朵会变成粉红色，那就是草莓味的棉花糖(想起了作为哈斯人的日子) ^ω^")
-            preferencesManager.saveDescription("原味棉花糖云  _S","晴空下的积云")
-            preferencesManager.saveDescription("草莓味棉花糖云  _S","傍晚时分西边天空的积云")
+            preferencesManager.saveDescription("棉花糖云","   蓬松的积云就像是一朵朵漂浮的巨型棉花糖，若是傍晚时分看见，云朵会变成粉红色，那就是草莓味的棉花糖(想起了作为哈斯人的日子) ^ω^")
+            preferencesManager.saveDescription("原味棉花糖云_S","晴空下的积云")
+            preferencesManager.saveDescription("草莓味棉花糖云_S","傍晚时分西边天空的积云")
             // 更新标志为已启动
             sharedPreferences.edit().putBoolean("isFirstLaunch", false).apply()
             badgeManager.initBadge()

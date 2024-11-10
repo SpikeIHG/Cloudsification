@@ -1,10 +1,8 @@
 package com.ihg.cloudsification.fragments.wikifragments
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context.MODE_PRIVATE
+
 import android.content.DialogInterface
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextPaint
@@ -28,11 +26,9 @@ import androidx.viewpager.widget.ViewPager
 import com.fridayof1995.tabanimation.SnapTabLayout
 import com.ihg.cloudsification.R
 import com.ihg.cloudsification.adapter.CareerManager
-import com.ihg.cloudsification.adapter.CloudCardAdapter
 import com.ihg.cloudsification.adapter.CustomCloudAdapter
 import com.ihg.cloudsification.adapter.PreferencesManager
 import com.ihg.cloudsification.adapter.SharedViewModel
-import com.ihg.cloudsification.entity.CloudCard
 import com.ihg.cloudsification.entity.CustomCloud
 import com.magicgoop.tagsphere.OnTagTapListener
 import com.magicgoop.tagsphere.TagSphereView
@@ -40,18 +36,9 @@ import com.magicgoop.tagsphere.item.TagItem
 import com.magicgoop.tagsphere.item.TextTagItem
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
-
-
-
 
 class WikiCustomFragment : Fragment() , OnTagTapListener {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     lateinit var tagView : TagSphereView
     lateinit var preferencesManager : PreferencesManager
@@ -62,10 +49,10 @@ class WikiCustomFragment : Fragment() , OnTagTapListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
+       /* arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -162,6 +149,12 @@ class WikiCustomFragment : Fragment() , OnTagTapListener {
                         } else {
                             preferencesManager?.saveGeneraSpecies(key, arrayOf(""))
                         }
+                  /*  if ( justdoforit != null && justdoforit.size != 0) {
+
+                        preferencesManager.saveGeneraSpecies(key, justdoforit)
+                    } else {
+                        preferencesManager?.saveGeneraSpecies(key, arrayOf(""))
+                    }*/
                         // 保存描述
                         preferencesManager?.saveDescription(key, gene_desc.text.toString())
 
@@ -274,10 +267,10 @@ class WikiCustomFragment : Fragment() , OnTagTapListener {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             WikiCustomFragment().apply {
-                arguments = Bundle().apply {
+                /*arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
-                }
+                }*/
             }
 
 

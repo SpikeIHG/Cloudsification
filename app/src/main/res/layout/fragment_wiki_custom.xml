@@ -160,7 +160,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="      笔者从前有个想法，是在了解云朵分类法的时候产生的。当时看到云朵名字，感觉非常繁杂，无论中文还是英文，文绉绉。所以笔者就萌生了一个想法，也许我们可以创建自己的分类法，也许我们可以给云取任何我们自己喜欢的名字。不需要追求分类上的区分性，只要自己满意就好。所以这一个板块大致就是产生于这样一个初衷，读者可以在这里定义自己的云朵种类和云属"
+                            android:text="      笔者从前有个想法，是在了解云朵分类法的时候产生的。当时看到云朵名字，感觉繁杂，无论中文还是英文，文绉绉。所以笔者想，也许我们可以创建自己的分类法，也许我们可以给云取任何我们自己喜欢的名字。不需要追求分类上的区分性，只要自己满意就好。这一个板块大致就是产生于这样一个初衷，读者可以在这里定义自己的云朵种类和云属   ^ω^"
                             android:padding="16dp"
                             android:letterSpacing="0.1"
                             android:textSize="16sp"/>
@@ -219,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.1"
                     android:padding="10dp"
-                    android:text="    这是一个Canvas，当成功新建云属后将会在这上面显示，点击具体云属可以查看定义的云种 y(^O^)y"
+                    android:text="    这是一个Canvas，当成功新建云属后将会在这上面显示，可以滑动点击。点击具体云属就可以查看定义的云种 y(^O^)y"
                     android:textStyle="bold"
                     android:textSize="16sp" />
 
